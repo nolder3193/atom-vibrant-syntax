@@ -322,14 +322,14 @@ atom-text-editor[mini] .scroll-view {
 // CSS ===========================================================
 
 .syntax--css {
+  // Property names
+  .syntax--property-name {
+    color: @lightgray;
+  }
+
   // Property values
   .syntax--property-value {
     color: @blue;
-  }
-
-  // Property names
-  .syntax--property-name {
-    color: lighten(@darkgray, 25%);
   }
 
   // Function punctuation
@@ -354,7 +354,7 @@ atom-text-editor[mini] .scroll-view {
 
   // Ruby code
   .syntax--ruby.syntax--embedded {
-    color: @magenta;
+    color: @blue;
   }
 
   // Interpolation
@@ -364,7 +364,7 @@ atom-text-editor[mini] .scroll-view {
 
   // Conditionals
   .syntax--keyword {
-    color: @orange;
+    color: @magenta;
   }
 
   // Attributes
@@ -394,7 +394,22 @@ atom-text-editor[mini] .scroll-view {
 
   // Variables
   .syntax--variable {
-    color: @blue;
+    color: @orange;
+  }
+
+  // Instance variable @
+  .syntax--punctuation.syntax--definition.syntax--variable {
+    color: @orange;
+  }
+
+  // Symbols
+  .syntax--other.syntax--symbol.syntax--constant {
+    color: @lime;
+
+    // Symbol colons
+    .syntax--constant.syntax--punctuation {
+      color: inherit;
+    }
   }
 }
 
