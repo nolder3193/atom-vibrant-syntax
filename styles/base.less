@@ -1,0 +1,558 @@
+@import "syntax-variables";
+
+atom-text-editor {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
+
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
+
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
+
+  .gutter {
+    background-color: @syntax-gutter-background-color;
+    color: @syntax-gutter-text-color;
+
+    .line-number {
+      &.cursor-line {
+        background-color: @syntax-gutter-background-color-selected;
+        color: @syntax-gutter-text-color-selected;
+      }
+
+      &.cursor-line-no-selection {
+        color: @syntax-gutter-text-color-selected;
+      }
+    }
+  }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @lightgray;
+  }
+
+  .invisible {
+    color: @syntax-text-color;
+  }
+
+  .cursor {
+    color: @syntax-cursor-color;
+    border-left: 2px solid @syntax-cursor-color;
+  }
+
+  .selection .region {
+    background-color: @syntax-selection-color;
+  }
+}
+
+atom-text-editor::shadow {
+  // The cursor line important to use rgba for opacity, also requires !important
+  // to override any theme.
+  .line.highlight-line {
+    background: lighten(@darkergray, 5%) !important;
+  }
+}
+
+// Mini editor
+
+atom-text-editor[mini] .scroll-view {
+  padding-left: 1px;
+}
+
+// Syntax styles
+
+.syntax--comment {
+  color: @darkgray;
+}
+
+.syntax--keyword {
+  color: @magenta;
+
+  &.syntax--control {
+    color: @magenta;
+  }
+
+  &.syntax--operator {
+    color: @syntax-text-color;
+  }
+
+  &.syntax--other.syntax--special-method {
+    color: @blue;
+  }
+
+  &.syntax--other.syntax--unit {
+    color: @lime;
+  }
+}
+
+.syntax--storage {
+  color: @magenta;
+}
+
+.syntax--constant {
+  color: @orange;
+
+  &.syntax--character.syntax--escape {
+    color: @blue;
+  }
+
+  &.syntax--numeric {
+    color: @green;
+  }
+
+  &.syntax--other.syntax--color {
+    color: @blue;
+  }
+
+  &.syntax--other.syntax--symbol {
+    color: @green;
+  }
+}
+
+.syntax--variable {
+  color: @orange;
+
+  &.syntax--interpolation {
+    color: @indigo;
+  }
+
+  &.syntax--parameter.syntax--function {
+    color: @orange;
+  }
+
+  .syntax--punctuation {
+    color: @lightgray;
+  }
+}
+
+.syntax--invalid.syntax--illegal {
+  background-color: @pink;
+  color: @syntax-background-color;
+}
+
+.syntax--string {
+  color: @green;
+
+
+  &.syntax--regexp {
+    color: @blue;
+
+    .syntax--source.syntax--ruby.syntax--embedded {
+      color: @orange;
+    }
+  }
+
+  &.syntax--other.syntax--link {
+    color: @pink;
+  }
+}
+
+.syntax--punctuation {
+  &.syntax--definition {
+    &.syntax--comment {
+      color: @darkgray;
+    }
+
+    &.syntax--variable,
+    &.syntax--parameters,
+    &.syntax--array {
+      color: @syntax-text-color;
+    }
+
+    &.syntax--string {
+      color: @green;
+    }
+
+    &.syntax--heading,
+    &.syntax--identity {
+      color: @blue;
+    }
+
+    &.syntax--bold {
+      color: @orange;
+      font-weight: bold;
+    }
+
+    &.syntax--italic {
+      color: @magenta;
+      font-style: italic;
+    }
+  }
+
+  // Interpolation
+  &.syntax--section.syntax--embedded {
+    color: @lime;
+  }
+
+}
+
+.syntax--support {
+  &.syntax--class {
+    color: @orange;
+  }
+
+  &.syntax--function  {
+    color: @blue;
+
+    &.syntax--any-method {
+      color: @blue;
+    }
+  }
+}
+
+.syntax--entity {
+  &.syntax--name.syntax--function {
+    color: @blue;
+  }
+  &.syntax--name.syntax--type {
+    color: @orange;
+  }
+
+  &.syntax--other.syntax--inherited-class {
+    color: @green;
+  }
+  &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
+    color: @orange;
+  }
+
+  &.syntax--name.syntax--section {
+    color: @blue;
+  }
+
+  &.syntax--name.syntax--tag {
+    color: @pink;
+  }
+
+  // CSS class selector
+  &.syntax--other.syntax--attribute-name {
+    color: @indigo;
+
+    &.syntax--id {
+      color: @blue;
+    }
+  }
+}
+
+.syntax--meta {
+  &.syntax--class {
+    color: @orange;
+  }
+
+  &.syntax--link {
+    color: @orange;
+  }
+
+  &.syntax--require {
+    color: @blue;
+  }
+
+  &.syntax--selector {
+    color: @magenta;
+  }
+
+  &.syntax--separator {
+    background-color: @lightgray;
+    color: @syntax-text-color;
+  }
+}
+
+.syntax--none {
+  color: @syntax-text-color;
+}
+
+.syntax--markup {
+  &.syntax--bold {
+    color: @orange;
+    font-weight: bold;
+  }
+
+  &.syntax--changed {
+    color: @magenta;
+  }
+
+  &.syntax--deleted {
+    color: @pink;
+  }
+
+  &.syntax--italic {
+    color: @magenta;
+    font-style: italic;
+  }
+
+  &.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+    color: @blue;
+  }
+
+  &.syntax--inserted {
+    color: @green;
+  }
+
+  &.syntax--list {
+    color: @pink;
+  }
+
+  &.syntax--quote {
+    color: @orange;
+  }
+
+  &.syntax--raw.syntax--inline {
+    color: @green;
+  }
+}
+
+.syntax--source.syntax--gfm .syntax--markup {
+  -webkit-font-smoothing: auto;
+  &.syntax--heading {
+    color: @green;
+    font-size: rem(40);
+  }
+}
+
+.syntax--brace {
+  color: @lightgray;
+}
+
+// CSS ===========================================================
+
+.syntax--css {
+  // Property values
+  .syntax--property-value {
+    color: @blue;
+  }
+
+  // Property names
+  .syntax--property-name {
+    color: lighten(@darkgray, 25%);
+  }
+
+  // Function punctuation
+  .syntax--punctuation.syntax--function {
+    color: @lightgray;
+  }
+
+  // Pseudo elements
+  .syntax--entity.syntax--other.syntax--pseudo-element {
+    color: @green;
+  }
+
+  // Interpolation
+  .syntax--interpolation {
+    color: @indigo;
+  }
+}
+
+// SLIM ==========================================================
+
+.syntax--slim {
+
+  // Ruby code
+  .syntax--ruby.syntax--embedded {
+    color: @magenta;
+  }
+
+  // Interpolation
+  .syntax--ruby.syntax--embedded.syntax--punctuation {
+    color: @lime;
+  }
+
+  // Conditionals
+  .syntax--keyword {
+    color: @orange;
+  }
+
+  // Attributes
+  .syntax--attribute-with-value .syntax--attribute-name {
+    color: @lime;
+  }
+
+  // Operators
+  .syntax--operator {
+    color: @lightgray;
+  }
+
+  // Punctuation
+  .syntax--punctuation {
+    color: @lightgray;
+  }
+
+  // Constants
+  .syntax--constant .syntax--punctuation {
+    color: @orange;
+  }
+
+  // Hash colons
+  .syntax--constant .syntax--punctuation.syntax--hashkey {
+    color: @lightgray;
+  }
+
+  // Variables
+  .syntax--variable {
+    color: @blue;
+  }
+}
+
+// JS/COFFEE =====================================================
+
+.syntax--js, .syntax--coffee {
+
+  // Entities, global objects
+  .syntax--entity.syntax--name.syntax--type,
+  .syntax--support.syntax--class {
+    color: @lime;
+  }
+
+  // Instances
+  .syntax--entity.syntax--name.syntax--type.syntax--instance {
+    text-decoration: underline;
+  }
+
+  // Variables
+  .syntax--variable {
+    color: @indigo;
+  }
+
+  // Function arrows
+  .syntax--storage {
+    color: @pink;
+  }
+
+  // Operators
+  .syntax--operator {
+    color: @lime;
+  }
+
+  // Parameters
+  .syntax--parameter.syntax--function {
+    color: @lime;
+  }
+
+  // "new" keyword
+  .syntax--new {
+    color: @pink;
+  }
+}
+
+// JS ============================================================
+
+.syntax--js {
+
+  // Constants
+  .syntax--constant {
+    color: @lime;
+  }
+
+  // JSX React component name
+  .syntax--component {
+    color: @magenta;
+  }
+
+  // JSX React attribute name
+  .syntax--entity.syntax--other.syntax--attribute-name {
+    color: @lightgray;
+  }
+
+  // Operators
+  .syntax--operator {
+    color: @indigo;
+  }
+
+  // Numbers
+  .syntax--numeric {
+    color: @orange;
+  }
+
+  // Parameters
+  .syntax--parameter.syntax--function {
+    color: @orange;
+  }
+}
+
+// JSON ==========================================================
+
+.syntax--json {
+  // Constants
+  .syntax--constant {
+    color: @lime;
+  }
+  // Numbers
+  .syntax--numeric {
+    color: @pink;
+  }
+
+  // String Keys
+  .syntax--string {
+    color: @indigo;
+  }
+
+  // String values
+  .syntax--key-value + .syntax--string {
+    color: @green;
+  }
+}
+
+// HTML ==========================================================
+
+.syntax--html {
+
+  // Tags
+  .syntax--entity.syntax--name.syntax--tag {
+    color: @blue;
+  }
+
+  // Tag brackets
+  .syntax--meta.syntax--link,
+  .syntax--punctuation.syntax--tag {
+    color: @indigo;
+  }
+
+  // Attributes
+  .syntax--entity.syntax--other.syntax--attribute-name {
+    color: @indigo;
+
+    &.syntax--class {
+      color: @magenta;
+    }
+  }
+
+  // Class
+  .syntax--entity.syntax--other.syntax--attribute-name.syntax--class {
+    color: @magenta;
+  }
+
+  // ID
+  .syntax--entity.syntax--other.syntax--attribute-name.syntax--id {
+    color: @lime;
+  }
+
+  // = sign
+  .syntax--punctuation.syntax--key-value {
+    color: @lime;
+  }
+}
+
+// YAML ==========================================================
+
+.syntax--yaml {
+
+  // Keys
+  .syntax--entity.syntax--name.syntax--tag {
+    color: @indigo;
+  }
+
+  // Constants
+  .syntax--constant {
+    color: @lime;
+  }
+
+  // Numbers
+  .syntax--constant.syntax--numeric {
+    color: @pink;
+  }
+}
