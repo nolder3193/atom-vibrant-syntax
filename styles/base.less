@@ -1,5 +1,7 @@
 @import "syntax-variables";
 
+// ATOM ===========================================================
+
 atom-text-editor {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
@@ -52,7 +54,7 @@ atom-text-editor {
   }
 }
 
-atom-text-editor::shadow {
+atom-text-editor.editor {
   // The cursor line important to use rgba for opacity, also requires !important
   // to override any theme.
   .line.highlight-line {
@@ -322,14 +324,14 @@ atom-text-editor[mini] .scroll-view {
 // CSS ===========================================================
 
 .syntax--css {
+  // Property names
+  .syntax--property-name {
+    color: @lightgray;
+  }
+
   // Property values
   .syntax--property-value {
     color: @blue;
-  }
-
-  // Property names
-  .syntax--property-name {
-    color: lighten(@darkgray, 25%);
   }
 
   // Function punctuation
@@ -354,7 +356,7 @@ atom-text-editor[mini] .scroll-view {
 
   // Ruby code
   .syntax--ruby.syntax--embedded {
-    color: @magenta;
+    color: @blue;
   }
 
   // Interpolation
@@ -364,7 +366,7 @@ atom-text-editor[mini] .scroll-view {
 
   // Conditionals
   .syntax--keyword {
-    color: @orange;
+    color: @magenta;
   }
 
   // Attributes
@@ -394,7 +396,22 @@ atom-text-editor[mini] .scroll-view {
 
   // Variables
   .syntax--variable {
-    color: @blue;
+    color: @orange;
+  }
+
+  // Instance variable @
+  .syntax--punctuation.syntax--definition.syntax--variable {
+    color: @orange;
+  }
+
+  // Symbols
+  .syntax--other.syntax--symbol.syntax--constant {
+    color: @lime;
+
+    // Symbol colons
+    .syntax--constant.syntax--punctuation {
+      color: inherit;
+    }
   }
 }
 
@@ -436,6 +453,11 @@ atom-text-editor[mini] .scroll-view {
   // "new" keyword
   .syntax--new {
     color: @pink;
+  }
+
+  // Numbers
+  .syntax--numeric {
+    color: @orange;
   }
 }
 
