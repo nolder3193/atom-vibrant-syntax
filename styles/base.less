@@ -1,5 +1,7 @@
 @import "syntax-variables";
 
+// ATOM ===========================================================
+
 atom-text-editor {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
@@ -52,7 +54,7 @@ atom-text-editor {
   }
 }
 
-atom-text-editor::shadow {
+atom-text-editor.editor {
   // The cursor line important to use rgba for opacity, also requires !important
   // to override any theme.
   .line.highlight-line {
@@ -451,6 +453,11 @@ atom-text-editor[mini] .scroll-view {
   // "new" keyword
   .syntax--new {
     color: @pink;
+  }
+
+  // Numbers
+  .syntax--numeric {
+    color: @orange;
   }
 }
 
